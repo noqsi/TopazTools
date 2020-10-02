@@ -23,7 +23,7 @@ dimhw-4.0.0 : $(DIMHWTGZ)
 $(LIB)/libdimhw.so : dimhw-4.0.0
 	cp dimhw-4.0.0/lib/libdimhw-pi.so.4.0.0 $(LIB)/libdimhw.so.4.0.0
 	ldconfig
-	rm $(LIB)/libdimhw.so
+	rm -f $(LIB)/libdimhw.so
 	ln -s $(LIB)/libdimhw.so.4 $(LIB)/libdimhw.so
 
 /etc/udev/rules.d/brightspec.rules :
