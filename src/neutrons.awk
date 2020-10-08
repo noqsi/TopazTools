@@ -1,7 +1,7 @@
 # Assume EXT counts are neutrons.
 # Pick neutron events from tsv output of qdaq.
 # Print times of their acq cycles, total number, and rate.
-# Assumes elapsed time is live time for these.
+# Use "elapsed" time for the acquistion as live time (no PHA dead time).
 # Intended for background monitoring (low rate).
 
 BEGIN{FS="\t"}
@@ -12,4 +12,7 @@ BEGIN{FS="\t"}
 
 /EXT/{ sum+=$2; if ($2 > 0) print $2,s }
 
-END{ print "Total", sum; print "Rate", sum/live " per second" }
+END{ 
+	print "Total Events", sum;
+	print "Live Time", live, "seconds";
+	print "Rate", sum/live "+-" sqrt(sum)/live " per second" }
