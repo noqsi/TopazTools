@@ -13,15 +13,15 @@ The output is a tab-separated value (TSV) stream to standard output. Typical usa
 
 The `qdaq` command does not take arguments.
 
-### topaz_hv
+### topaz\_hv
 
 Sets the detector bias voltage. Typical usage:
 
     topaz_hv 60.0
 
-This sets the bias at the HIGH VOLTAGE connector to 60V and enables the HV supply. There's a compiled-in limit of 70V, adjustable in the Makefile. Negative voltages are unsupported (the hardware can't do that), and setting the voltage to 0 also dusables the HV supply.
+This sets the bias at the HIGH VOLTAGE connector to 60V and enables the HV supply. There's a compiled-in limit of 70V, adjustable in the Makefile. Negative voltages are unsupported (the hardware can't do that), and setting the voltage to 0 also disables the HV supply.
 
-### topaz_hv_off
+### topaz\_hv\_off
 
 This command takes no arguments. It disables the HV supply.
 
