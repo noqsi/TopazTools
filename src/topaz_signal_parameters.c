@@ -1,8 +1,6 @@
 #include "twrap.h"
 
 int main( int argc, char *argv[] ) {
-
-	(void) openTopaz();
 	
 	int p = read_Topaz_int( DEF_MCA_PARAM_GAIN_DIGITAL );
 	printf( "Digital gain: %d (%d)\n", p, 1<<p );

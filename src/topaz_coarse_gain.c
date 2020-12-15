@@ -1,8 +1,6 @@
 #include "twrap.h"
 
 int main( int argc, char *argv[] ) {
-
-	(void) openTopaz();
 	
 	int gain;
 	if( argc != 2 || sscanf( argv[1], "%d", &gain ) != 1 ) {
