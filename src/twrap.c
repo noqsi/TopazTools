@@ -10,9 +10,9 @@ static char 	mca_path[ DEF_MCA_STRING_LENGTH ],
 static int32_t mca_type;
 static int isopen;
 
-static void openTopaz( void ) {
+static HANDLE openTopaz( void ) {
 	
-	if( isopen ) return
+	if( isopen ) return mca;
 
 // Assume exactly one Topaz MCA attached, get its handle.
 
@@ -42,6 +42,9 @@ static void openTopaz( void ) {
 		fprintf( stderr, "Can't open MCA, code %d\n", code );
 		exit(1);
 	}
+	
+	isopen = 1;
+	return mca;
 }
 
 int32_t read_Topaz_int( int32_t paramid ) {
@@ -71,5 +74,5 @@ void write_Topaz_int( int32_t paramid, int32_t p ) {
 	return;
 }
 
-const char *Topaz_name( void ) { return mca_name }
-const char *Topaz_serial( void ) { return mca_serial }
+const char *Topaz_name( void ) { return mca_name; }
+const char *Topaz_serial( void ) { return mca_serial; }
