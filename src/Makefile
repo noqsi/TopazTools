@@ -1,7 +1,7 @@
 CFLAGS = -g -Wall -I../dimhw-4.0.0/include/ -DHV_LIMIT=$(HV_LIMIT)
 LDFLAGS = -ldimhw -lusb-1.0
 BINARIES = qdaq topaz_hv topaz_hv_off topaz_signal_parameters topaz_threshold \
-	topaz_coarse_gain
+	topaz_coarse_gain topaz_spectra topaz_integration topaz_channels
 
 # Compiled-in HV voltage limit.
 # 70V is suitable for PIPS detectors.
@@ -12,7 +12,8 @@ HV_LIMIT = 70.0
 
 all : $(BINARIES)
 
-topaz_signal_parameters topaz_threshold topaz_coarse_gain:  twrap.o
+topaz_signal_parameters topaz_threshold topaz_channels \
+topaz_coarse_gain topaz_spectra topaz_integration:  twrap.o
 
 install : $(BINARIES)
 	cp -a $(BINARIES) /usr/local/bin/

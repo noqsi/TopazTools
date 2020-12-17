@@ -10,7 +10,7 @@ static char 	mca_path[ DEF_MCA_STRING_LENGTH ],
 static int32_t mca_type;
 static int isopen;
 
-static HANDLE openTopaz( void ) {
+HANDLE openTopaz( void ) {
 	
 	if( isopen ) return mca;
 
@@ -74,5 +74,32 @@ void write_Topaz_int( int32_t paramid, int32_t p ) {
 	return;
 }
 
-const char *Topaz_name( void ) { return mca_name; }
-const char *Topaz_serial( void ) { return mca_serial; }
+float read_Topaz_float( int32_t paramid ) {
+	float p;
+	
+	openTopaz();
+	int code = GetParam( mca, paramid, &p, sizeof(p));
+	if( code != MCA_SUCCESS ) {
+		fprintf( stderr, "Can't get param %d, code %d\n", 
+			paramid, code );
+		exit(1);
+	}
+	
+	return p;
+}
+
+void write_Topaz_float( int32_t paramid, float p ) {
+	
+	openTopaz();
+	int code = SetParam( mca, paramid, &p, sizeof(p));
+	if( code != MCA_SUCCESS ) {
+		fprintf( stderr, "Can't set param %d to %f, code %d\n", 
+			paramid, p, code );
+		exit(1);
+	}
+	
+	return;
+}
+
+const char *Topaz_name( void ) { openTopaz(); return mca_name; }
+const char *Topaz_serial( void ) { openTopaz(); return mca_serial; }
