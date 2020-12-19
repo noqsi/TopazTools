@@ -35,6 +35,10 @@ int main( int argc, char **argv ) {
 	printf( "CHANNELS\t%d\n", channels );
 
 	uint32_t *spectrum = calloc( sizeof( uint32_t ), channels );
+
+// Use clock time
+	
+	write_Topaz_int( DEF_MCA_PARAM_ACQ_MODE_EX, 2 );
 		
 // Collect and report until interrupted.
 	
