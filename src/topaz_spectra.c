@@ -44,6 +44,8 @@ int main( int argc, char **argv ) {
 	
 	for( ;; ) {
 	
+	// Punctuate with a blank line
+		printf( "\n" );
 		fflush( stdout );
 	
 	// Start with a clean slate
