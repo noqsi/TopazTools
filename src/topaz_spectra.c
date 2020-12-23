@@ -44,6 +44,8 @@ int main( int argc, char **argv ) {
 	
 	for( ;; ) {
 	
+		fflush( stdout );
+	
 	// Start with a clean slate
 	
 		int code = ClearAll( mca );
